@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: customers
+    columns: 
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers')   # references your dbt model or source for customers
+              field: customer_id
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - completed
+                - shipped
+                - returned
+                - return_pending
+                - placed
+                - FAILED
+                - FAILED_FULLY
