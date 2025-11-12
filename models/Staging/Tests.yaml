@@ -35,4 +35,4 @@ models:
                 - return_pending
                 - placed
                 - FAILED
-                -FAILED_FULLY
+                - FAILED_FULLY
