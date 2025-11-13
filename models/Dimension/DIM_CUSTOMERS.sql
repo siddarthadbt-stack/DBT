@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', transient=false) }}
 
 with customers as (
      select * from {{ ref('customers') }}
